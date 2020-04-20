@@ -14,8 +14,10 @@ class DashboardController : UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addNavBarImage()
+        checkIfLoggedIn()
         delegate = self
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
@@ -35,5 +37,23 @@ class DashboardController : UITabBarController, UITabBarControllerDelegate {
         self.navigationItem.titleView = logoContainer
     }
     
-    
+    func checkIfLoggedIn() {
+        // If no user found in FirebaseAuth, logs out
+        if Auth.auth().currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+        }
+        // Otherwise gets user information
+        else{
+            //load data from Firebase.
+        }
+    }
+}
+
+// Selectors
+extension DashboardController {
+    // Instantly logs out if user is not logged in
+    @objc func handleLogout() {
+        let titleVC = LoginViewController()
+        self.navigationController?.pushViewController(titleVC, animated: true)
+    }
 }
