@@ -171,7 +171,7 @@ extension SignUpViewController {
         signupIntroLabel.textColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.00)
         signupIntroLabel.textAlignment = .center
         signupIntroLabel.numberOfLines = 0
-        signupIntroLabel.text = "Sign up to post and see subleases\nall around campus!"
+        signupIntroLabel.text = "Sign up to see more posts"
         signupIntroLabel.translatesAutoresizingMaskIntoConstraints = false
         signupIntroLabel.font = UIFont.boldSystemFont(ofSize: 14)
         signupIntroLabel.adjustsFontForContentSizeCategory = true

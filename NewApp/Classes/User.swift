@@ -2,8 +2,8 @@
 //  User.swift
 //  NewApp
 //
-//  Created by Myungyun Chung on 1/27/20.
-//  Copyright © 2020 Myungyun Chung. All rights reserved.
+//  Created by Brian Chung on 4/12/20.
+//  Copyright © 2020 Brian Chung. All rights reserved.
 //
 
 import Foundation
