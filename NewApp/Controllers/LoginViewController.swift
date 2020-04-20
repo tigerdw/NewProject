@@ -4,6 +4,7 @@
 //  Created by brian Chung on 19/4/2020.
 //  Copyright © 2020 brian Chung. All rights reserved.
 //
+// Login page. Help users to sign up or sign in.
 
 import UIKit
 
@@ -18,7 +19,7 @@ class LoginViewController: UIViewController {
     let emailTextField = UITextField()
     let passwordTextField = UITextField()
 
-    let background = UIImage(named: "full-logo")
+    let background = UIImage(named: "templogo")
     let imageView = UIImageView()
     
     var view_width = CGFloat()
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNavBarImage()
         self.navigationController?.isNavigationBarHidden = true
         
         view_width = view.frame.width
@@ -33,6 +35,20 @@ class LoginViewController: UIViewController {
 
         setBackground()
         addSubviews()
+    }
+    
+    func addNavBarImage() {
+        
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        
+        let logoImage = UIImage(named: "templogo")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.frame = CGRect(x: 0,y: 0, width: 100, height: 30)
+        logoImageView.contentMode = .scaleAspectFit
+        logoContainer.addSubview(logoImageView)
+
+        self.navigationItem.titleView = logoContainer
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +64,11 @@ class LoginViewController: UIViewController {
     }
 
     @objc func goToSignUpView() {
-        //let signUpController = SignUpViewController()
+        let signUpController = SignUpViewController()
         // Makes the presented view full screen
-        // signUpController.modalPresentationStyle = .fullScreen
-        // Push the new VC
-        //self.navigationController?.pushViewController(signUpController, animated: true)
+        signUpController.modalPresentationStyle = .fullScreen
+        //Push the new VC
+        self.navigationController?.pushViewController(signUpController, animated: true)
     }
     
     // Hide keyboard when user touches outside keyboard
@@ -145,12 +161,12 @@ extension LoginViewController {
     
     @objc func loginButtonTapped() {
         guard  let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
-            //AlertMaster.invalidFormDetailAlert(on: self, message: "Make sure all forms are filled out")
+            AlertMaster.invalidFormDetailAlert(on: self, message: "Make sure all forms are filled out")
             return
         }
-        //let trimmed_email = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        //let trimmed_password = password.trimmingCharacters(in: .whitespacesAndNewlines)
-        //FirebaseAuthManager.sharedInstance.loginUser(on: self, email: trimmed_email, password: trimmed_password)
+        let trimmed_email = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmed_password = password.trimmingCharacters(in: .whitespacesAndNewlines)
+        FirebaseAuthManager.sharedInstance.loginUser(on: self, email: trimmed_email, password: trimmed_password)
     }
     
     func setUpConstraints() {

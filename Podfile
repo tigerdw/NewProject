@@ -5,8 +5,11 @@ target 'NewApp' do
   use_frameworks!
     # Add the Firebase pod for Google Analytics
     pod 'Firebase/Analytics'
-    pod 'Firebase/Core'
-    pod 'Firebase/Messaging'
     pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Firestore'
+    pod 'Firebase/Storage'
+    pod 'FirebaseFirestoreSwift'
+    pod 'IQKeyboardManagerSwift'
 
 end

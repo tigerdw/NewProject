@@ -5,6 +5,7 @@
 //  Created by brian Chung on 19/4/2020.
 //  Copyright © 2020 brian Chung. All rights reserved.
 //
+// Setup Dashboard Controller as the first page.
 
 import UIKit
 import SwiftUI
